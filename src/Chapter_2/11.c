@@ -21,8 +21,8 @@ int main()
 	 * или isUppercaseVowel */
 
 	if (isLowercaseVowel || isUppercaseVowel)
-			printf("Введенный сивол - гласный\n");
+        printf("Введенный сивол - гласный\n");
 	else
-			printf("Введенный символ - согласный\n");
+        printf("Введенный символ - согласный\n");
 	return 0;
 }
