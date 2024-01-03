@@ -1,4 +1,5 @@
 /* Передача массива функции */
+
 #include <stdio.h>
 #includ <math.h>
 
