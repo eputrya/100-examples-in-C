@@ -23,4 +23,3 @@ int main()
     printf("Результат: ");
     puts(line);
     return 0;
-}
