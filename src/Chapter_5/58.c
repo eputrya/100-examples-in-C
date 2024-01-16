@@ -7,7 +7,7 @@ int main()
     printf("Введите строку s1: ");
     getc(s1);
 
-    for (i = 0; s[i] != '\0'; ++i)
+    for (i = 0; s1[i] != '\0'; ++i)
     {
         s2[i] = s1[i];
     }
