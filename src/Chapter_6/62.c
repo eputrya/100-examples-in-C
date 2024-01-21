@@ -1,5 +1,6 @@
 /* Сложение двух структур с использованием функции*/
 #include <stdio.h>
+
 typedef struct complex
 {
     float real;
