@@ -20,12 +20,13 @@ int main()
 
     printf("Конечное время: \n");
     printf("Введите часы, минуты, секунды: ");
-    scanf("%d %d %d", &startTime.hours, &startTime.minutes, &startTime.seconds);
+    scanf("%d %d %d", &stopTime.hours, &stopTime.minutes, &stopTime.seconds);
 
     // Вычисляем разницу.
-    differenceBetweenTimePeriod(startTime, startTime, &diff);
+    differenceBetweenTimePeriod(startTime, stopTime, &diff);
 
     printf("\nРазница: %d:%d:%d - ", startTime.hours, startTime.minutes, startTime.seconds);
+    printf("%d:%d:%d ", stopTime.hours, stopTime.minutes, stopTime.seconds);
     printf("= %d:%d:%d\n", diff.hours, diff.minutes, diff.seconds);
 
     return 0;
