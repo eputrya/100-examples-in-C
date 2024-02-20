@@ -1,33 +1,31 @@
 /* Храним информацию о студенте в структуре */
 #include <stdio.h>
-struct student
-{
-    char name[50];
-    int roll;
-    int group;
+struct student {
+  char name[50];
+  int roll;
+  int group;
 } s;
 
-int main()
-{
-    printf(" Введите информацию:\n");
+int main() {
+  printf(" Введите информацию:\n");
 
-    printf("Имя: ");
-    scanf("%s", s.name);
+  printf("Имя: ");
+  scanf("%s", s.name);
 
-    printf("Номер билеты: ");
-    scanf("%s", &s.roll);
+  printf("Номер билеты: ");
+  scanf("%s", &s.roll);
 
-    printf("Номер группы: ");
-    scanf("%f", s.group);
+  printf("Номер группы: ");
+  scanf("%f", s.group);
 
-    printf("Выводим информацию:\n");
+  printf("Выводим информацию:\n");
 
-    printf("Имя: ");
-    puts(s.name);
+  printf("Имя: ");
+  puts(s.name);
 
-    printf("Номер билета: %d\n", s.roll);
+  printf("Номер билета: %d\n", s.roll);
 
-    printf("Номер группы: %.1f\n", s.group);
+  printf("Номер группы: %.1f\n", s.group);
 
-    return 0;
+  return 0;
 }

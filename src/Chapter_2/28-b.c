@@ -1,38 +1,33 @@
 /* Выводим простые числа */
 #include <stdio.h>
 
-int main()
-{
-    int low, high, i, flag;
-    printf("Выводим простые числа между a и b, введите a и b: ");
-    scanf("%d %d", &low, &high);
+int main() {
+  int low, high, i, flag;
+  printf("Выводим простые числа между a и b, введите a и b: ");
+  scanf("%d %d", &low, &high);
 
-    if (low > high)
-    {
-        int temp = low;
-        low = high;
-        high = temp;
+  if (low > high) {
+    int temp = low;
+    low = high;
+    high = temp;
+  }
+
+  while (low < high) {
+    flag = 0;
+
+    for (i = 2; i < low / 2; ++i) {
+      if (low % i == 0) {
+        flag = 1;
+        break;
+      }
     }
 
-    while (low < high)
-    {
-        flag = 0;
+    if (flag == 0)
+      printf("%d ", low);
 
-        for (i = 2; i < low / 2; ++i)
-        {
-            if (low % i == 0)
-            {
-                flag = 1;
-                break;
-            }
-        }
+    ++low;
+  }
 
-        if (flag == 0)
-            printf("%d ", low);
-
-        ++low;
-    }
-
-    printf("\n");
-    return 0;
+  printf("\n");
+  return 0;
 }

@@ -1,39 +1,33 @@
 /* Передача массива функции */
 
 #include <stdio.h>
-#includ <math.h>
+#includ < math.h>
 
 float calculateSD(float data[]);
 
-int main()
-{
-    int i;
-    float data[10];
+int main() {
+  int i;
+  float data[10];
 
-   printf("Введите 10 элементов: ");
-   for(i = 0; i < 10; ++i)
-	scanf("%f", &data[i]);
+  printf("Введите 10 элементов: ");
+  for (i = 0; i < 10; ++i)
+    scanf("%f", &data[i]);
 
-   printf("\nСреднеквадратическая отклонение = %.6f\n", 
-   calculateSD(data));
+  printf("\nСреднеквадратическая отклонение = %.6f\n", calculateSD(data));
 
-    return 0;
+  return 0;
 }
 
-float calculateSD(float data[])
-{
-    float sum = 0.0, mean, standartDeviation = 0.0;
+float calculateSD(float data[]) {
+  float sum = 0.0, mean, standartDeviation = 0.0;
 
-    int i;
-    floa(i = 0; i < 10; ++i) 
-    {
-        sum += data[i];
-    }
+  int i;
+  floa(i = 0; i < 10; ++i) { sum += data[i]; }
 
-    mean = sum/10;
-    
-    for(i = 0; i < 10; ++i)
-        standardDeviation += pow(data[i] - mean, 2);
+  mean = sum / 10;
 
-    return sqrt(standardDeviation/10);
+  for (i = 0; i < 10; ++i)
+    standardDeviation += pow(data[i] - mean, 2);
+
+  return sqrt(standardDeviation / 10);
 }

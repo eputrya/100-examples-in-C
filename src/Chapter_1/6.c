@@ -1,24 +1,23 @@
 #include <stdio.h>
 
-int main(){
+int main() {
 
-    int dividend, divisor, quotien, remainder;
+  int dividend, divisor, quotien, remainder;
 
-    printf("Введите делимое: ");
-    scanf("%d", &dividend);
+  printf("Введите делимое: ");
+  scanf("%d", &dividend);
 
-    printf("Введите делитель: ");
-    scanf("%d", &divisor);
+  printf("Введите делитель: ");
+  scanf("%d", &divisor);
 
-    // Computes quotient
-    quotien = dividend / divisor;
+  // Computes quotient
+  quotien = dividend / divisor;
 
-    // Computes remained
-    remainder = dividend % divisor; 
+  // Computes remained
+  remainder = dividend % divisor;
 
-    printf("Частное = %d\n", quotien);
-    printf("Остаток = %d\n", remainder);
+  printf("Частное = %d\n", quotien);
+  printf("Остаток = %d\n", remainder);
 
-    return 0;
-
+  return 0;
 }

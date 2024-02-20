@@ -2,23 +2,20 @@
 #include <stdio.h>
 void reverseSentence();
 
-int main()
-{
-    printf("Введите предложение: ");
-    reverseSentence();
-    printf("\n");
+int main() {
+  printf("Введите предложение: ");
+  reverseSentence();
+  printf("\n");
 
-    return 0;
+  return 0;
 }
 
-void reverseSentence()
-{
-    char c;
-    scanf("%c", &c);
+void reverseSentence() {
+  char c;
+  scanf("%c", &c);
 
-    if (c != '\n')
-    {
-        reverseSentence();
-        printf("%c", c);
-    }
+  if (c != '\n') {
+    reverseSentence();
+    printf("%c", c);
+  }
 }
