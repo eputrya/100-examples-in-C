@@ -1,3 +1,5 @@
+/* Динамическое выделение памяти */
+
 #include <stdio.h>
 #include <stdlib.h>
 
