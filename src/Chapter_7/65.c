@@ -1,3 +1,5 @@
+/* Запись предложения в файл */
+
 #include <stdio.h>
 #include <stdlib.h> /* Для функции exit() */
 
