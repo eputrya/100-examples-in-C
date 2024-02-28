@@ -164,3 +164,140 @@ bool game_over() {
   // Если все координаты различны, то все в порядке - играем дальше.
   return false;
 }
+
+// Проверяем, не вышла ли змейка за поле, если да, то возвращаем ее обратно.
+void check_coordinates() {
+  if (coordinates_x[1] > N)
+    coordinates_x[1] = 1;
+  if (coordinates_x[1] < 1)
+    coordinates_x[1] = N;
+  if (coordinates_y[1] > M)
+    coordinates_y[1] = 1;
+  if (coordinates_y[1] < 1)
+    coordinates_y[1] = M;
+}
+
+// функция следующего хода, в которой наша змейка сдвигается в сторону на 1
+// ячейку
+
+void next_step() {
+  // Чистим таблицу от змейки.
+  clear_snake_on_table();
+
+  // Передвигаем тело змейки.
+  for (int i = snake_size; i >= 2; --i) {
+    coordinates_x[i] = coordinates_x[i - 1];
+    coordinates_y[i] = coordinates_y[i - 1];
+  }
+
+  // Передвигаем голову змейки.
+  coordinates_x[1] += change_x;
+  coordinatex_y[1] += change_y;
+
+  // Проверяем, в порядке ли координаты.
+  check_coordinates();
+
+  // Если голова змейки там же, где и еда, то увеличиваем размер змейки и
+  // очищаем координаты змейки.
+  if (coordinates_x[1] == food_x && coordinates_y[1] == food_y) {
+    snake_size++;
+    food_x = -1;
+    food_y = -1;
+  }
+
+  // Рисуем змейку.
+  show_snake_on_table();
+
+  // Если змея укусила себя.
+  if (game_over()) {
+    // Сообщаем всю правду об игроке.
+    std::cout << "You're looser! \n" l
+    // Приостанавливаем игру.
+#ifdef WINDOWS
+            system("pause");
+#endif
+    // Завершаем программу.
+    std::exit(0);
+  }
+}
+
+// функция проверки на наличие еды на карте.
+bool food_check() {
+  // Если координаты еды неопределены, то возвращаем false.
+  if (food_x == -1 && food_y == -1)
+    return false;
+  // В остальных случаях true.
+  return true;
+}
+
+// функция добавления еды на карту.
+void place_food() {
+  std::srand(std::time(NULL));
+  // Ставим в рандомное место еду.
+  for (int i = 1; i <= 9; ++i) {
+    int x = std::rand(), y = std::rand();
+    if (x < 0)
+      x *= -1;
+    if (y < 0)
+      y *= -1;
+    x %= (N + 1);
+    y %= (M + 1);
+    if (x == 0)
+      ++x;
+    if (y == 0)
+      ++y;
+    if (a[x][y] != '@' && a[x][y] != 'v' && a[x][y] != '^' && a[x][y] != '<' &&
+        a[x][y] != '>') {
+      food_x = x;
+      food_y = y;
+      a[x][y] = '+';
+      return;
+    }
+  }
+}
+
+// Начальные установки.
+void standart_settings() {
+  // Размер змеи - 2.
+  snake_size = 2;
+
+  // Змейка занимает две клетки вправо от координат {1,1}.
+  coordinates_x[1] = 1;
+  coordinates_y[1] = 2;
+  coordinates_x[2] = 1;
+  coordinates_y[2] = 1;
+
+  // Змейка движется вправо.
+  change_x = 0;
+  change_y = 1;
+}
+
+int main() {
+  // Задаем стандартные настройки.
+  standart_settings();
+
+#ifdef WINDOWS
+  std::memset(a, ' ', sizeof(a));
+  nonblock(NB_ENABLE);
+#endif
+
+  // Бесконечный цикл.
+  while (true) {
+    // Если нажата клавиша, обрабатываем нажатую клавишу.
+    if (kbhit() != 0)
+      change_direction();
+
+    // Двигаем змейку.
+    next_step();
+
+    // Если нет еды, то ставим ее.
+    if (!food_check())
+      place_food();
+
+    // Рисуем змейку.
+    show_table();
+
+    // Усыпляем программу на заданный интервал.
+    Sleep(INTERVAL);
+  }
+}
